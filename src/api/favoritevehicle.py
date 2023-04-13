@@ -1,20 +1,19 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db
-#from .models import db, User
-from .planet import Planet
+from api.vehicle import Vehicle
 
-class FavoritePlanet(db.Model):
+class FavoriteVehicle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    planet_id = db.Column(db.Integer, db.ForeignKey('planet.id'), nullable=False)
+    vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicle.id'), nullable=False)
 
     def serialize(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "planet_id": self.planet_id,
-            "planet_name": Planet.query.get(self.planet_id).serialize()["name"],
+            "vehicle_id": self.vehicle_id,
+            "vehicle_name": Vehicle.query.get(self.vehicle_id).serialize()["name"],
             "user_name": User.query.get(self.user_id).serialize()["name"],
             "user": User.query.get(self.user_id).serialize(),
-            "planet": Planet.query.get(self.planet_id).serialize()
+            "vehicle": Vehicle.query.get(self.vehicle_id).serialize()
         }
