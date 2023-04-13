@@ -12,7 +12,7 @@ from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 
-from models import db, User, , Planet, Vehicle, FavoritePeople, FavoritePlanet, FavoriteVehicle
+#from models import db, User, Planet, Vehicle, FavoritePeople, FavoritePlanet, FavoriteVehicle
 
 #from models import Person
 

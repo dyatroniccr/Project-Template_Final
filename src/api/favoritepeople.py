@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db
+from api.models import User
+from api.people import People
 
 class FavoritePeople(db.Model):
     id = db.Column(db.Integer, primary_key=True)

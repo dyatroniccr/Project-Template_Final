@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from .db import db
-
+from .favoritepeople import FavoritePeople
+from .favoriteplanet import FavoritePlanet
+from .favoritevehicle import FavoriteVehicle
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
