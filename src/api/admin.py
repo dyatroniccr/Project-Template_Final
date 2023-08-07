@@ -9,6 +9,7 @@ from .vehicle import Vehicle
 from .favoritepeople import FavoritePeople
 from .favoriteplanet import FavoritePlanet
 from .favoritevehicle import FavoriteVehicle
+from .tokenblockedlist import TokenBlockedList
 from flask_admin.contrib.sqla import ModelView
 
 
@@ -28,7 +29,7 @@ def setup_admin(app):
     admin.add_view(ModelView(FavoritePeople, db.session))
     admin.add_view(ModelView(FavoritePlanet, db.session))
     admin.add_view(ModelView(FavoriteVehicle, db.session))
-    #admin.add_view(ModelView(TokenBlockedList, db.sesion))
+    admin.add_view(ModelView(TokenBlockedList, db.session))
 
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))

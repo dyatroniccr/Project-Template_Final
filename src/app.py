@@ -6,20 +6,28 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
+
 from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
 
-#from models import db, User, Planet, Vehicle, FavoritePeople, FavoritePlanet, FavoriteVehicle
+from api.extensions import jwt, bcrypt
 
+#from models import db, User, Planet, Vehicle, FavoritePeople, FavoritePlanet, FavoriteVehicle
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+
+#Setup del JWT y Encryptacion
+app.config["JWT_SECRET_KEY"] = os.getenv("FLASK_APP_KEY")  # Change this!
+jwt = JWTManager(app)
+
+bcrypt = Bcrypt(app)
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
